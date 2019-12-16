@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 		unless user
       		user = User.create(user_params)
       		jwt = Auth.issue({user: user.id})
-      		render json: {jwt: jwt}
+      		redirect_to photos_path, locals: { token: jwt }
       	else 
       		if user && user.authenticate(user_params[:password])
 				jwt = Auth.issue({user: user.id})

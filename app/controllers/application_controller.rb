@@ -25,8 +25,8 @@ class ApplicationController < ActionController::Base
     	header = session[:user_id]
     	begin
       		@decoded = Auth.decode(header)
-      		puts @decoded
       		@current_user = User.find(@decoded["user"])
+      		params[:current_user] = @current_user.id
     	rescue ActiveRecord::RecordNotFound => e
       		render json: { errors: e.message }, status: :unauthorized
     	rescue JWT::DecodeError => e

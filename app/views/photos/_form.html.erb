@@ -10,18 +10,21 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= form.label :caption %>
-    <%= form.text_field :caption %>
+    <%= form.text_field :caption, :maxlength => 100, :size => 70 %>
   </div>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
+  <% unless params[:action] == 'edit'%>
+    <div class="field">
+      <%= form.label :image %>
+      <%= form.file_field :image %>
+    </div>
+  <% end %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Save as Draft' %>
+  </div>
+  <div class="actions">
+    <%= form.submit 'Publish' %>
   </div>
 <% end %>

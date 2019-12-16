@@ -1,12 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Photos</h1>
-
+<%= form_tag(photos_path, :method => "get") do %>
+  <%= select_tag 'filter', options_for_select([ "All", "My Photos", 'Draft' ], params[:filter_type] || 'All'), onchange: "this.form.submit();" %>
+  <%= select_tag 'sort', options_for_select(['', "Desc", "Asc"], params[:sort] || ''), onchange: "this.form.submit();" %>
+  <%= select_tag 'user', options_for_select(User.all.map{|u| [u.username, u.id]}), onchange: "this.form.submit();" %>
+<% end %>
 <table>
   <thead>
     <tr>
       <th>Caption</th>
       <th>Image</th>
+      <th> Status </th>
+      <th> Action </th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,13 +21,17 @@
     <% hidden_field_tag 'token', @token %>
     <% @photos.each do |photo| %>
       <tr>
+        <td><%= photo.id %></td>
         <td><%= photo.caption %></td>
         <% if photo.image.attached? %>
           <td><image src="<%=(url_for(photo.image))%>"></td>
         <% end%>
+        <td><%= photo.user.username %></td>
+        <td><%= photo.status %></td>
         <td><%= link_to 'Show', photo %></td>
-        <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
-        <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         <td><%= link_to 'Edit', edit_photo_path(photo) %> </td>
+        <td><%= button_to 'Publish', publish_photo_path(photo), method: :post, remote: true, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
