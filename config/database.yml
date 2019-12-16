@@ -23,4 +23,4 @@ test:
   database: photo_app_test
 
 production:
-  <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
