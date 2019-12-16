@@ -19,7 +19,7 @@ gem 'bootstrap',  '~>4.3.1'
 gem 'bootstrap_form'
 gem 'jwt'
 gem 'bcrypt', '~> 3.1.7'
-
+gem 'mini_magick'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

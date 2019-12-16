@@ -12,12 +12,12 @@
   <% end %>
   <div class="field">
     <%= form.label :caption %>
-    <%= form.text_field :caption, :maxlength => 100, :size => 70 %>
+    <%= form.text_field :caption,  :maxlength => 100, :size => 70, :required=>true %>
   </div>
   <% unless params[:action] == 'edit'%>
     <div class="field">
       <%= form.label :image %>
-      <%= form.file_field :image %>
+      <%= form.file_field :image, required: true %>
     </div>
   <% end %>
 
