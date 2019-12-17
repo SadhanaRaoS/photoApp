@@ -22,7 +22,6 @@
     <% hidden_field_tag 'token', @token %>
     <% @photos.each do |photo| %>
       <tr>
-        <td><%= photo.id %></td>
         <td><%= photo.caption %></td>
         <% if photo.image.attached? %>
           <td><image src="<%=(url_for(photo.image))%>"></td>
