@@ -23,4 +23,8 @@ test:
   database: photo_app_test
 
 production:
-  url: <%= ENV["DATABASE_URL"] %>
+  host: <%= ENV['DATABASE_HOST']%>
+  database: photo_application
+  username: <%= ENV['DATABASE_USER']%>
+  port: <%= ENV['DATABASE_PORT']%>
+  password: <%= ENV['DATABASE_PASSWORD']%>
