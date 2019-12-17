@@ -23,6 +23,7 @@ test:
   database: photo_app_test
 
 production:
+  adapter: postgresql
   host: <%= ENV['DATABASE_HOST']%>
   database: photo_application
   username: <%= ENV['DATABASE_USER']%>
