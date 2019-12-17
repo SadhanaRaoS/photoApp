@@ -2,7 +2,7 @@
 
 <h1>Photos</h1>
 <%= form_tag(photos_path, :method => "get") do %>
-  <%= select_tag 'filter', options_for_select([ "All", "My Photos", 'Draft' ], params[:filter_type] || 'All'), onchange: "this.form.submit();" %>
+  <%= select_tag 'filter', options_for_select([ "All", "My Photos", 'Draft' ], params[:filter] || 'All'), onchange: "this.form.submit();" %>
   <%= select_tag 'sort', options_for_select(['', "Desc", "Asc"], params[:sort] || ''), onchange: "this.form.submit();" %>
   <%= select_tag 'user', options_for_select(User.all.map{|u| [u.username, u.id]}), onchange: "this.form.submit();" %>
 <% end %>
@@ -12,6 +12,7 @@
       <th>Caption</th>
       <th>Image</th>
       <th> Status </th>
+      <th> User </th>
       <th> Action </th>
       <th colspan="3"></th>
     </tr>
