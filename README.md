@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple photo upload app where the users can upload photo , list , edit caption for the uploaded photos
 
 Things you may want to cover:
 
 * Ruby version
+	2.6.3
 
 * System dependencies
+	The appliation uses Rails version 6 and postgres for the database. Make sure the dependencies are installed.
 
 * Configuration
-
+	
 * Database creation
+	run rails db:setup 
+	run rails db:migrate to run the database
 
-* Database initialization
-
+	
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+	bundle exec rspec 
 
 * ...
